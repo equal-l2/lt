@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vim-Exit</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Noto+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono);
+      body {
+        font-family: 'Noto Sans';
+      }
+      h1, h2, h3 {
+        font-family: 'Noto Sans';
+        font-weight: normal;
+      }
+      .remark-slide-content {
+        font-size: 25px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      code {
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      li {
+        padding-bottom: 40px;
+      }
+
+      /* https://github.com/gnab/remark/issues/50#issuecomment-223887379 */
+      @page {
+        size: 1210px 681px;
+        margin: 0;
+      }
+
+      @media print {
+        .remark-slide-scaler {
+          width: 100% !important;
+          height: 100% !important;
+          transform: scale(1) !important;
+          top: 0 !important;
+          left: 0 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: center,middle
+# **Vimからexitする**
+
+---
+
+# Vim exitの重要性
+  Stack Overflowの質問  
+  [<span style="color:#cc3300">"How to exit the Vim editor"</span>](https://stackoverflow.com/questions/11828270)
+
+---
+
+# Vim exitの重要性
+  Stack Overflowの質問  
+  [<span style="color:#cc3300">"How to exit the Vim editor"</span>](https://stackoverflow.com/questions/11828270)
+
+- 2016年、100万人がこの質問へアクセスした
+- ピーク時では1時間で80人がアクセス
+- 国別ではウクライナからのアクセスが最多
+
+([David Robinson氏の記事](https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/)による)
+
+---
+
+# Vim exitの重要性
+  Stack Overflowの質問  
+  [<span style="color:#cc3300">"How to exit the Vim editor"</span>](https://stackoverflow.com/questions/11828270)
+
+- 2016年、100万人がこの質問へアクセスした
+- ピーク時では1時間で80人がアクセス
+- 国別ではウクライナからのアクセスが最多
+
+([David Robinson氏の記事](https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/)による)
+
+**<p style="text-align:center;color:#3366ff">Vimのexit方法を学んでウクライナ人を助けよう</p>**
+
+---
+
+# 基本
+
+- `:q` &amp; `:q!`  
+  現在のウィンドウを閉じる
+- `:wq` &amp; `:wq!`  
+  内容をファイルに書き込み、現在のウィンドウを閉じる
+- `:x` &amp; `:x!`  
+  `:wq`と同じだが、変更があった場合のみ書き込む
+
+---
+
+# 応用
+- `:qa`, `:wqa`, `:xa`  
+  先述のコマンドでは複数ウィンドウがあると面倒  
+  このコマンドたちは全ウィンドウを閉じてくれる  
+  
+---
+
+# 応用
+- `:qa`, `:wqa`, `:xa`  
+  先述のコマンドでは複数ウィンドウがあると面倒  
+  このコマンドたちは全ウィンドウを閉じてくれる  
+- `ZZ`, `ZQ`  
+  `ZZ`は`:x`、`ZQ`は`:q!`に相当  
+  「キーが壊れて`:`が打てない」、  
+  「US配列で`:`を打つのが面倒」な方へ
+  
+---
+
+# 応用
+- `:qa`, `:wqa`, `:xa`  
+  先述のコマンドでは複数ウィンドウがあると面倒  
+  このコマンドたちは全ウィンドウを閉じてくれる  
+- `ZZ`, `ZQ`  
+  `ZZ`は`:x`、`ZQ`は`:q!`に相当  
+  「キーが壊れて`:`が打てない」、  
+  「US配列で`:`を打つのが面倒」な方へ
+- `:cq`  
+  基本的に`:qa`と同じ  
+  ただし非ゼロ(エラー)を終了コードとして返す
+  
+---
+# `:cq`の使い所
+  gitなどからVimを呼び出したとき  
+  (e.g. コミットメッセージ記入)  
+
+---
+
+# `:cq`の使い所
+  gitなどからVimを呼び出したとき  
+  (e.g. コミットメッセージ記入)  
+
+  ![git merge](merge.png)  
+
+  コミットをやめたいとき、`:cq`で終了する  
+  Vimの実行に失敗したことになりコミットが中断される  
+
+---
+
+class: center,middle
+# **おわり**
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
